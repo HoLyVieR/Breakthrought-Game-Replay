@@ -102,10 +102,10 @@
 		btnPrevious.onclick = doPreviousMove;
 		
 		for (var row=0; row<8; row++) {
-			var tr = tblBoard.insertRow();
+			var tr = tblBoard.insertRow(row);
 			
 			for (var col=0; col<8; col++) {
-				tr.insertCell();
+				tr.insertCell(col);
 			}
 		}
 		
