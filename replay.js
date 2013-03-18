@@ -60,6 +60,10 @@
 		if (isPlaying) {
 			if (seqIndex != seq.length) {
 				timer = setTimeout(doNextMove, TIMER_AUTO);
+			} else {
+				if (isPlaying) {
+					playPause();
+				}
 			}
 		}
 		
