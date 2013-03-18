@@ -17,6 +17,30 @@
 	window.onload = function () {
 		initBoard();
 	};
+
+	window.onkeydown = function(e){
+	
+    		switch(e.which) {
+			
+				case 13: // enter
+				case 32: // space
+				playPause();
+				break;
+				
+				
+				case 37: // left
+				pause();
+				doPreviousMove();
+				break;
+
+				case 39: // right
+				pause();
+				doNextMove();
+				break;
+				
+				default: return; // exit this handler for other keys
+    	}
+	};	
 	
 	function setColor(x, y, color) {
 		tblData[x][y] = color;
@@ -59,6 +83,7 @@
 		
 		if (isPlaying) {
 			if (seqIndex != seq.length) {
+				clearTimeout(timer);
 				timer = setTimeout(doNextMove, TIMER_AUTO);
 			} else {
 				if (isPlaying) {
@@ -78,6 +103,13 @@
 		for (var i=0; i<targetIndex; i++) {
 			doNextMove();
 		}
+	}
+	
+	function pause(){
+		if(!isPlaying)
+			return;
+			
+		playPause();
 	}
 	
 	function playPause() {
